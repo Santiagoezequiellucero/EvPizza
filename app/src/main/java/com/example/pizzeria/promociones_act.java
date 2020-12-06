@@ -19,7 +19,7 @@ public class promociones_act extends AppCompatActivity {
     private Spinner spinner;
     private EditText txtPromo, txtEnvio;
     private TextView txtResultado, txtTotal;
-    int promo;
+    int promo,  total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,30 +43,36 @@ public class promociones_act extends AppCompatActivity {
         Promociones p = new Promociones();
 
 
-
         String cliente = spinner.getSelectedItem().toString();
 
         String promocion= txtPromo.getText().toString();
+        int envio = Integer.parseInt(txtEnvio.getText().toString());
 
         if (promocion.isEmpty()){
             Toast.makeText(this, "No ha escrito una promoción", Toast.LENGTH_LONG).show();
+        }else {
+
+            switch (promocion) {
+                case "Pizzas promo":
+                    promo = p.getPizzaPromo();
+                    total = promo + envio;
+                    txtTotal.setText(total);
+                    break;
+                case "Master pizza":
+                    promo = p.getMasterPizza();
+                    total = promo + envio;
+                    txtTotal.setText(total);
+                    break;
+                case "Pizzas max":
+                    promo = p.getPizzaMax();
+                    total = promo + envio;
+                    txtTotal.setText(total);
+                    break;
+
+            }
         }
 
-        else if (promocion.equalsIgnoreCase("Pizzas promo")){
-             promo = p.getPizzaPromo();
-        }
-        else if(promocion.equalsIgnoreCase("Master pizza")){
-            promo = p.getMasterPizza();
-        }
-        else if(promocion.equalsIgnoreCase("Pizzas max")){
-            promo = p.getPizzaMax();
-        }
+        txtResultado.setText("Estimado "+cliente+" el total segun la promocion y envio es: ");
 
-
-        int envio = Integer.parseInt(txtEnvio.getText().toString());
-        int total = promo + envio;
-
-        //txtResultado.setText("Estimado "+cliente+" el total segun la promocion y envio es: ");
-        txtTotal.setText(total);
     }
 }
