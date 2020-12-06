@@ -4,7 +4,7 @@ public class Promociones {
 
     private int pizzaPromo, masterPizza, pizzaMax;
 
-    public void Promociones(){
+    public Promociones(){
 
         pizzaPromo =5990;
         masterPizza = 12990;

@@ -45,7 +45,7 @@ public class promociones_act extends AppCompatActivity {
 
         String cliente = spinner.getSelectedItem().toString();
 
-        String promocion= txtPromo.getText().toString();
+        String promocion= txtPromo.getText().toString().toLowerCase();
         int envio = Integer.parseInt(txtEnvio.getText().toString());
 
         if (promocion.isEmpty()){
@@ -53,20 +53,20 @@ public class promociones_act extends AppCompatActivity {
         }else {
 
             switch (promocion) {
-                case "Pizzas promo":
+                case "pizzas promo":
                     promo = p.getPizzaPromo();
-                    total = promo + envio;
-                    txtTotal.setText(total);
+                    total = promo+envio;
+                    txtTotal.setText(String.valueOf(total));
                     break;
-                case "Master pizza":
+                case "master pizza":
                     promo = p.getMasterPizza();
                     total = promo + envio;
-                    txtTotal.setText(total);
+                    txtTotal.setText(String.valueOf(total));
                     break;
-                case "Pizzas max":
+                case "pizzas max":
                     promo = p.getPizzaMax();
                     total = promo + envio;
-                    txtTotal.setText(total);
+                    txtTotal.setText(String.valueOf(total));
                     break;
 
             }
